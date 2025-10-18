@@ -21,42 +21,73 @@ nav:
   - Work:
       - Vertical Constructions:
           - Walls:
-              - Sill Plates: work/vertical/walls/sill-plates.md
-              - Unit: work/vertical/walls/unit.md
-              - Exterior: work/vertical/walls/exterior.md
-              - Corridor: work/vertical/walls/corridor.md
-              - Demising: work/vertical/walls/demising.md
-              - Gable: work/vertical/walls/gable.md
-              - Parapet: work/vertical/walls/parapet.md
-              - Shaft: work/vertical/walls/shaft.md
-              - Furring: work/vertical/walls/furring.md
-              - Corners: work/vertical/walls/corners.md
+              - ◼️ Sill Plates: work/vertical/walls/sill-plates.md
+              - ◼️ Unit: work/vertical/walls/unit.md
+              - ◼️ Exterior: work/vertical/walls/exterior.md
+              - ◼️ Corridor: work/vertical/walls/corridor.md
+              - ◼️ Demising: work/vertical/walls/demising.md
+              - ◼️ Gable: work/vertical/walls/gable.md
+              - ◼️ Parapet: work/vertical/walls/parapet.md
+              - ◼️ Shaft: work/vertical/walls/shaft.md
+              - ◼️ Furring: work/vertical/walls/furring.md
+              - ◼️ Corners: work/vertical/walls/corners.md
           - Openings:
-              - Windows & Doors: work/vertical/openings/windows-doors.md
-              - Headers: work/vertical/openings/headers.md
+              - ◼️ Windows & Doors: work/vertical/openings/windows-doors.md
+              - ◼️ Headers: work/vertical/openings/headers.md
           - Sheathing:
-              - Wall Sheathing: work/vertical/sheathing/wall-sheathing.md
-              - Floor: work/vertical/sheathing/floor.md
-              - Gable: work/vertical/sheathing/gable.md
-              - Duplicate of Gable: work/vertical/sheathing/duplicate-of-gable.md
-              - Truss Heel: work/vertical/sheathing/truss-heel.md
-              - Shear Wall: work/vertical/sheathing/shear-wall.md
+              - ◼️ Wall Sheathing: work/vertical/sheathing/wall-sheathing.md
+              - ◼️ Floor: work/vertical/sheathing/floor.md
+              - ◼️ Gable: work/vertical/sheathing/gable.md
+              - ◼️ Duplicate of Gable: work/vertical/sheathing/duplicate-of-gable.md
+              - ◼️ Box Sheathing: work/vertical/sheathing/box-sheathing.md
+              - ◼️ Truss Heel: work/vertical/sheathing/truss-heel.md
+              - ◼️ Shear Wall: work/vertical/sheathing/shear-wall.md
+      - SQFT's:
+          - ◼️ Basement: work/SQFT's/basement.md
+          - ◼️ 1st, 2nd ….. 5th: work/SQFT's/1st2nd.md
+          - ◼️ Loft: work/SQFT's/loft.md
+          - ◼️ Roof: work/SQFT's/roof.md
+          - ◼️ Deck: work/SQFT's/deck.md
+          - ◼️ Porch: work/SQFT's/porch.md
+          - ◼️ Balcony: work/SQFT's/balcony.md
+          - ◼️ Cantilevered: work/SQFT's/cantilevered.md
+      - Sheathing and Misc:
+          - ◼️ Eve: work/sheathingandmisc/eve.md
+          - ◼️ Rake: work/sheathingandmisc/rake.md
+          - ◼️ Returns: work/sheathingandmisc/returns.md
+          - ◼️ Roof Asphalt, Metal, Flat: work/sheathingandmisc/rooftype.md
+          - ◼️ Ridge , Valley, Hip: work/sheathingandmisc/ridgevalleyhip.md
+          - ◼️ Flashing: work/sheathingandmisc/flashing.md
       - Horizontal Constructions:
+          - Floor Framing:
+              - ◼️ Post: work/horizontal/floor-framing/post.md
+              - ◼️ Beam: work/horizontal/floor-framing/beam.md
+              - ◼️ Joist: work/horizontal/floor-framing/joist.md
+              - ◼️ Stair: work/horizontal/floor-framing/stair.md
+              - ◼️ Subfloor Sheathing: work/horizontal/floor-framing/subfloor.md
+              - 🟪 Details: 
+                  - ◼️ Rim Board: work/horizontal/floor-framing/details/rim.md
+                  - ◼️ Ribbon Board: work/horizontal/floor-framing/details/ribbon.md
+                  - ◼️ Blocking: work/horizontal/floor-framing/details/blocking.md
+                  - ◼️ Blocking o.c.: work/horizontal/floor-framing/details/blockingoc.md
+                  - ◼️ Bracing for drywall: work/horizontal/floor-framing/details/bracingdrywalls.md
+                  - ◼️ Bolts: work/horizontal/floor-framing/details/bolts.md
+                  - ◼️ Screws: work/horizontal/floor-framing/details/Screws.md
+                  - ◼️ Steel Beam Web Fillers - Nailer Plates: work/horizontal/floor-framing/details/steelbeams.md
           - Roof Framing:
-              - Post: work/horizontal/roof-framing/post.md
-              - Ridge: work/horizontal/roof-framing/ridge.md
-              - Header: work/horizontal/roof-framing/header.md
-              - Hip: work/horizontal/roof-framing/hip.md
-              - Valley: work/horizontal/roof-framing/valley.md
-              - Dormer: work/horizontal/roof-framing/dormer.md
-              - Overframes: work/horizontal/roof-framing/overframes.md
-              - Dbl Trpl Rafters: work/horizontal/roof-framing/dbl-trpl-rafters.md
-              - Canopy: work/horizontal/roof-framing/canopy.md
-              - Roof Sheathing: work/horizontal/roof-framing/roof-sheathing.md
+              - ◼️ Ridge: work/horizontal/roof-framing/ridge.md
+              - ◼️ Header: work/horizontal/roof-framing/header.md
+              - ◼️ Hip: work/horizontal/roof-framing/hip.md
+              - ◼️ Valley: work/horizontal/roof-framing/valley.md
+              - ◼️ Dormer: work/horizontal/roof-framing/dormer.md
+              - ◼️ Overframes: work/horizontal/roof-framing/overframes.md
+              - ◼️ Dbl Trpl Rafters: work/horizontal/roof-framing/dbl-trpl-rafters.md
+              - ◼️ Canopy: work/horizontal/roof-framing/canopy.md
+              - ◼️ Roof Sheathing: work/horizontal/roof-framing/roof-sheathing.md
       - Deck / Porch / Balcony:
-          - Railing: work/deck/railing.md
-          - Balcony Trims: work/deck/balcony-trims.md
-          - Anchor Bolts: work/deck/anchor-bolts.md
+          - ◼️ Railing: work/deck/railing.md
+          - ◼️ Balcony Trims: work/deck/balcony-trims.md
+          - ◼️ Anchor Bolts: work/deck/anchor-bolts.md
 
 plugins:
   - search
