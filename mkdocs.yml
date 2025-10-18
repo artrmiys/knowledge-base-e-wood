@@ -1,12 +1,9 @@
 site_name: "E-Wood"
 site_description: "Estimating"
-
 theme:
   name: material
-  language: en
+  language: ru
 
 nav:
   - Home: index.md
-  - Work:
-      - Walls: work/vertical/walls/sill-plates.md
-
+  - Test Page: test.md
