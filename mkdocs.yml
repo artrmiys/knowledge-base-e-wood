@@ -3,18 +3,22 @@ site_description: "Estimating"
 theme:
   name: material
   language: ru
+  features:
+    - navigation.expand
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
   palette:
     - scheme: slate
       primary: green
-      accent: light green
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - toc.integrate
-    - content.code.copy
-    - search.suggest
-    - search.highlight
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
 
 nav:
   - Home: index.md
