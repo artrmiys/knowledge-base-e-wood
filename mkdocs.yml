@@ -1,5 +1,6 @@
 site_name: "E-Wood"
 site_description: "Estimating"
+docs_dir: docs
 
 theme:
   name: material
