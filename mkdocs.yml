@@ -4,6 +4,7 @@ site_description: "Estimating"
 theme:
   name: material
   language: ru
+  logo: assets/images/logo.png
   features:
     - navigation.expand
     - navigation.sections
