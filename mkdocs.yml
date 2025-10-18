@@ -1,12 +1,12 @@
 site_name: "E-Wood"
 site_description: "Estimating"
+
 theme:
   name: material
   language: ru
   features:
     - navigation.expand
     - navigation.sections
-    - navigation.top
     - toc.integrate
     - search.suggest
     - search.highlight
@@ -15,10 +15,6 @@ theme:
     - scheme: slate
       primary: green
       accent: lime
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
-
 
 nav:
   - Home: index.md
@@ -46,6 +42,7 @@ nav:
               - Box Sheathing: work/vertical/sheathing/box-sheathing.md
               - Truss Heel: work/vertical/sheathing/truss-heel.md
               - Shear Wall: work/vertical/sheathing/shear-wall.md
+
       - SQFTs:
           - Basement: work/sqfts/basement.md
           - 1st-5th Floors: work/sqfts/1st2nd.md
@@ -55,6 +52,7 @@ nav:
           - Porch: work/sqfts/porch.md
           - Balcony: work/sqfts/balcony.md
           - Cantilevered: work/sqfts/cantilevered.md
+
       - Sheathing and Misc:
           - Eve: work/sheathing-and-misc/eve.md
           - Rake: work/sheathing-and-misc/rake.md
@@ -62,6 +60,7 @@ nav:
           - Roof Types: work/sheathing-and-misc/rooftype.md
           - Ridge Valley Hip: work/sheathing-and-misc/ridgevalleyhip.md
           - Flashing: work/sheathing-and-misc/flashing.md
+
       - Horizontal Constructions:
           - Floor Framing:
               - Post: work/horizontal/floor-framing/post.md
@@ -78,6 +77,7 @@ nav:
                   - Bolts: work/horizontal/floor-framing/details/bolts.md
                   - Screws: work/horizontal/floor-framing/details/screws.md
                   - Steel Beam Web Fillers: work/horizontal/floor-framing/details/steelbeams.md
+
           - Roof Framing:
               - Ridge: work/horizontal/roof-framing/ridge.md
               - Header: work/horizontal/roof-framing/header.md
@@ -88,7 +88,8 @@ nav:
               - Dbl Trpl Rafters: work/horizontal/roof-framing/dbl-trpl-rafters.md
               - Canopy: work/horizontal/roof-framing/canopy.md
               - Roof Sheathing: work/horizontal/roof-framing/roof-sheathing.md
-      - Deck / Porch / Balcony:
+
+      - Deck-Porch-Balcony:
           - Railing: work/deck/railing.md
           - Balcony Trims: work/deck/balcony-trims.md
           - Anchor Bolts: work/deck/anchor-bolts.md
