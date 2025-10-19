@@ -18,12 +18,15 @@ theme:
       primary: green
       accent: lime
 
+extra_css: 
+    - assets/stylesheets/extra.css
+    
 nav:
   - Home: index.md
   - Work:
       - Vertical Constructions:
           - Walls:
-              - Sill Plates: work/vertical/walls/sill-plates.md
+              - ◼️ Sill Plates: work/vertical/walls/sill-plates.md
               - Unit: work/vertical/walls/unit.md
               - Exterior: work/vertical/walls/exterior.md
               - Corridor: work/vertical/walls/corridor.md
