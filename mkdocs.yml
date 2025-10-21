@@ -6,7 +6,7 @@ theme:
   language: ru
   logo: assets/images/logo.png
   features:
-    - navigation.expand
+    #- navigation.expand
     - navigation.sections
     - navigation.top
     - toc.integrate
