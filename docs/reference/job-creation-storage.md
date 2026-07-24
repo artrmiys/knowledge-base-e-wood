@@ -13,14 +13,32 @@
 
 ## Как создать job { .kb-section-title .kb-st--green }
 
-Всё начинается с кнопки `Open / Import` на ленте (или ++ctrl+o++). Четыре способа:
+Всё начинается с кнопки `Open / Import` на ленте (или ++ctrl+o++). Меню поделено на
+секции — **открыть**, **создать** и **импортировать в текущий**:
 
-| Способ | Что выбрать | Что происходит |
-| --- | --- | --- |
-| **Из папки с PDF** | `New job from a folder of PDFs...` | Указываешь папку с PDF → программа ищет `*.pdf` (включая подпапки), просит имя job, создаёт его и **сразу импортирует все PDF**. Имена листов не спрашивает. |
-| **Пустой job** | `Blank job — start empty, add sheets later` | Создаёт пустой job без листов. Листы добавишь потом (`Add Pages`, `Blank Sheet`). |
-| **Из PDF takeoffs** | `Import PDF Takeoffs...` | Импортирует PDF **вместе с замерами-аннотациями** (lines/areas/counts) как редактируемые takeoff'ы. Сначала превью, файлы пишутся только после подтверждения. |
-| **Из PlanSwift** | `PlanSwift project...` | Конвертирует проект PlanSwift в job. Исходник PlanSwift открывается только на чтение. |
+**OPEN A JOB**
+
+| Пункт | Что делает |
+| --- | --- |
+| `Recent jobs...` | Список недавних + содержимое jobs-root (++ctrl+shift+o++). |
+| `Open a job from a folder...` | Открыть существующий job, указав его папку. |
+
+**CREATE A NEW JOB**
+
+| Пункт | Что происходит |
+| --- | --- |
+| `Blank job - start empty, add sheets later` | Пустой job без листов. Листы добавишь потом (`Add Pages`, `Blank Sheet`). |
+| `New job from a folder of PDFs...` | Указываешь папку с PDF → программа ищет `*.pdf` (включая подпапки), просит имя job, создаёт его и **сразу импортирует все PDF**. Имена листов не спрашивает. |
+| `Import PDF Takeoffs...` | Импорт PDF **вместе с замерами-аннотациями** (lines/areas/counts) как редактируемые takeoff'ы. Сначала превью, файлы — после подтверждения. |
+| `Sample job (demo to explore)` | Создаёт демо-job `OurPlanCore Guide Sample`, чтобы потыкать интерфейс без своих данных. |
+
+Внизу меню — `Manage job folders...` (обзор jobs-root).
+
+!!! note "PlanSwift — два разных пути"
+    Кнопка `PlanSwift` на **ленте `Main`** делает **отдельный** конвертированный job из
+    проекта PlanSwift. Пункт `Open / Import → Import into the current job → PlanSwift
+    project...` добавляет PlanSwift в **уже открытый** job. Не путай — в меню создания
+    job'а отдельного «PlanSwift project…» нет.
 
 !!! tip "Добавить листы в уже открытый job"
     `Add Pages` — импорт PDF · `Blank Sheet` — пустой лист · `PDF Takeoffs` —
@@ -93,7 +111,8 @@ PDFs`) выскакивает окно **`Import PDF Options`**:
 ### Что делает галочка
 
 - **Включена** → во время импорта программа дополнительно «запекает» каждый лист
-  в **растровую картинку** (~200 DPI) и строит **snap-индекс по чёрным линиям**.
+  в **растровую картинку** (150 DPI, «Raster First» — быстрое открытие листа) и
+  строит **snap-индекс по чёрным линиям**.
   Кэш лежит рядом с листом: `<job>\Pages\…\<лист>\raster\` (+ `snap.json`).
 - **Выключена** → импорт быстрее и без лишних файлов, но лист рисуется
   «налету» через PDF-рендер, и точная привязка к чёрным линиям недоступна.
@@ -128,16 +147,24 @@ PDFs`) выскакивает окно **`Import PDF Options`**:
 порядку (берёт первое доступное):
 
 1. выбранный jobs root из Job Picker;
-2. родитель текущего job;
-3. сохранённый `JobsRootPath` / недавние roots из настроек;
-4. `Documents\OurPlaneCore Jobs`;
-5. запасной вариант — `Desktop\OurPlaneCore Jobs`.
+2. родитель текущего открытого job;
+3. сохранённый `JobsRootPath` из настроек;
+4. любой из `JobsRootPaths` (список сохранённых roots);
+5. родитель одного из недавних job'ов;
+6. `Documents\OurPlanCore Jobs`;
+7. запасной вариант — `Desktop\OurPlanCore Jobs`.
 
 !!! note "Где смотреть, если не помнишь"
     Путь к последнему job и список недавних хранятся в
-    `%APPDATA%\OurPlaneCore\settings.json` (поля `LastJobPath`, `JobsRootPath`,
-    `JobsRootPaths`, `RecentJobs`). Самое простое — `Open / Import → Recent`
+    `%APPDATA%\OurPlanCore\settings.json` (поля `LastJobPath`, `JobsRootPath`,
+    `JobsRootPaths`, `RecentJobs`). Самое простое — `Open / Import → Recent jobs...`
     (++ctrl+shift+o++).
+
+!!! info "Про имя `OurPlanCore` в путях"
+    Программа называется **OurPlanCore** (без «e»), поэтому папки — `%APPDATA%\OurPlanCore\`
+    и `Documents\OurPlanCore Jobs`. Старое имя `OurPlaneCore` встречается только в
+    **миграционном** коде: если найдены настройки по старому пути, они один раз
+    переносятся в новый. Ориентируйся на `OurPlanCore`.
 
 ## Что появляется на диске { .kb-section-title .kb-st--magenta }
 
