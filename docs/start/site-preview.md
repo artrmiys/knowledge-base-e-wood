@@ -66,17 +66,12 @@ topic page.
 | Где | Клавиши | Что делает |
 | --- | --- | --- |
 | Wiki search | ++ctrl+k++ / ++cmd+k++ | Быстро найти правило по русскому или английскому term. |
-| Command Palette | ++ctrl+shift+p++ | Найти command в программе без охоты по меню. |
-| Save | ++ctrl+s++ | Сохранить job state. |
-| Open Job Picker | ++ctrl+shift+o++ | Открыть recent/pinned jobs и browse/create. |
-| PDF Snap | ++ctrl+f3++ | Включить snap к vector PDF/overlay geometry. |
-| Copy / Paste | ++ctrl+c++ / ++ctrl+v++ | Скопировать и вставить выбранные measurements. |
-| Multi-select | `Ctrl+Click` | Добавить или убрать отдельный measurement из selection. |
 
 !!! tip "Где полная таблица"
-    Полные hotkeys и command map держать в
-    [OurPlanCore](../reference/ourplanecore.md#hotkeys), а на topic pages
-    показывать только те shortcut-ы, которые реально помогают в этом workflow.
+    Клавиши программы и редактор назначений описаны в одном месте:
+    [Горячие клавиши OurPlanCore](../reference/ourplancore-shortcuts.md).
+    На предметной странице оставляй ссылку на нужный сценарий, чтобы старая
+    копия таблицы не попадала в поиск как актуальная инструкция.
 
 ## Визуальная проверка
 

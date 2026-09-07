@@ -24,12 +24,10 @@ not rely only on structural floor framing plans; check assemblies and details.
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Floor (обшивка перекрытия снаружи): [3 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/89948162/Floor)
+    - Floor (обшивка перекрытия снаружи): 3 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 3 иллюстраций</summary>

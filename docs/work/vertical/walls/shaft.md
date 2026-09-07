@@ -60,7 +60,7 @@ Shaft wall почти всегда fire-rated и собирается из CH-st
 ## Ещё примеры (shaft / fire wall)
 
 ??? info "Источник картинок"
-    - Shaft (противопожарные стены): [5 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/65306667/Shaft)
+    - Shaft (противопожарные стены): 5 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать ещё 3 иллюстрации</summary>

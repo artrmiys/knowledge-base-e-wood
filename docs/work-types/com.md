@@ -203,12 +203,10 @@ loose/additional detail.
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - COM Commercial Job: [13 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/2359297/COM+Commercial+Job)
+    - COM Commercial Job: 13 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 13 иллюстраций</summary>

@@ -1,75 +1,88 @@
-# Отраслевые стандарты и best practices
+# Отраслевые термины и проектные спецификации
 
-Куда наш takeoff/estimating ложится в общеотраслевую систему координат. Шпаргалка: на что похоже, какие стандарты, что мы и так делаем правильно.
+Эта страница помогает связать термины учебной KB с разделами спецификации и
+найти источник для проверки. Внутренний способ расчёта не становится отраслевой
+нормой только потому, что он используется в нескольких проектах.
 
-!!! tip "Зачем эта страница"
-    Чтобы говорить с GC/инженерами на одном языке (CSI-коды в спеках), не
-    забывать целые куски scope (особенно Division 07), и понимать, что наш
-    workflow = индустриальный **assembly-based estimating**, просто заточенный
-    под E-Wood.
+!!! note "Статус на 6 сентября 2026"
+    Прежняя страница смешивала внутренние правила, отраслевые термины и сравнения
+    программ. Здесь оставлены рабочие определения и маршруты к источникам.
+    Полная нормативная проверка инженерных правил этим обновлением не выполнялась.
 
-## Assemblies — наша единица работы { .kb-section-title .kb-st--green }
+## Assembly: набор связанных позиций
 
-Индустрия (RSMeans и пр.) считает не каждый гвоздь отдельно, а **assemblies**
-(«systems») — готовые наборы строк на единицу:
+В этой KB под **assembly** понимается набор материалов для выбранного элемента:
+например, каркас стены вместе с plates, bracing и другими позициями по scope.
+Это удобный способ не забывать связанные работы.
 
-- **per 1 LFT** framing (стены, plates, bracing) — `LFT × фактор`.
-- **per 1 SQFT** (sheathing, subfloor, insulation) — `area / 32` (лист) или `area × 1.1`.
-- **per each** (hangers, holdowns, posts).
+Внутренние примеры единиц расчёта:
 
-!!! note "Наш DFL = библиотека assemblies"
-    Каждый блок DFL (Foundation, Floor Walls, Truss Heel, Roof, Decking…) —
-    это assembly с формулой на LFT/SQFT/each. Waste-фактор уже внутри.
-    Полная библиотека (37 блоков, формулы, провенанс из 180 проектов) — в
-    Obsidian-wiki `wiki/E-Wood/blocks/`.
+- На **1 LFT** — выбранные линейные элементы.
+- На **1 SQFT** — выбранные площади sheathing, subfloor или insulation.
+- На **each** — отдельные posts, holdowns и другие штучные позиции.
 
-## CSI MasterFormat — нумерация для спеков { .kb-section-title .kb-st--cyan }
+Состав набора и формулы зависят от проекта и шаблона. Не прибавляй waste повторно,
+если он уже включён. Принятые внутренние множители собраны в
+[Формулах и факторах](formulas.md).
 
-6-значные коды, «Dewey Decimal стройки». Мы **уже** их пишем в E-колонке DFL и
-notes (`07.04 WD-01`, `05.01` guardrail, `07.01-07.03` EIFS).
+Прежнее описание «37 блоков из 180 проектов» относится к историческому внутреннему
+исследованию. Оно не является текущим публичным каталогом assemblies и в этом
+проходе не пересчитывалось.
 
-| Div | Что | Наши работы |
-| --- | --- | --- |
-| **03** | Concrete | foundation (by others), sill/anchor на стыке |
-| **05** | Metals | alum railings, steel beams, **Simpson коннекторы** |
-| **06** | **Wood/Plastics** | **ядро** — всё framing (studs, plates, headers, sheathing, stairs, decking PT, finish carpentry) |
-| **07** | **Thermal & Moisture** | sheathing-как-WRB, vapor barrier, insulation, tape, flashing, **siding**, roofing |
-| **08** | Openings | двери/окна (Int Doors) |
-| **09** | Finishes | gypsum/drywall, interior trims/base/casing/crown, EIFS |
+## CSI MasterFormat и обозначения проекта
 
-!!! warning "Division 07 — не забывать"
-    Boss-правило «вертикалка ≈ 50% здания» во многом про Div 07: vapor barrier,
-    tape, flashing, insulation, siding. Самые частые пропуски — отсюда. Прошёлся
-    по 06/07/08/09 → ничего не забыл.
+При работе со спецификацией пользуйся её оглавлением и обозначениями разделов.
+Название системы классификации само по себе не определяет, какие материалы
+входят в ваш scope или кому принадлежат работы.
 
-## Best practices — что мы делаем правильно { .kb-section-title .kb-st--magenta }
+Ниже — тематический указатель для чтения спецификации, а не готовое назначение
+кодов строкам Excel:
 
-| Best practice (индустрия) | У нас |
+| Раздел | Тема для проверки |
 | --- | --- |
-| Assembly per LFT/SQFT | ✅ формулы блоков |
-| Waste 10-15% | ✅ `1.1` general (rim EWP `1.05`) |
-| Group by size (studs/joists) | ✅ nested-IF по высоте стены |
-| Templates/checklists для consistency | ✅ scope-профили + [QA checklist](../start/quality-checklist.md) |
-| Flag risk / проверка раньше | ✅ validate ловит пропуски (section+row level) |
-| Stud spacing factors 12/16/24 = 1.4667/1.1/0.625 (joists — отдельно по `12/spacing`) | ✅ [Формулы](formulas.md) |
+| 03 | Concrete |
+| 05 | Metals |
+| 06 | Wood, Plastics, and Composites |
+| 07 | Thermal and Moisture Protection |
+| 08 | Openings |
+| 09 | Finishes |
 
-## AI-takeoff контекст { .kb-section-title .kb-st--amber }
+Точную классификацию конкретного материала сверяй с документацией проекта.
+Не относить автоматически весь крепёж, siding или trim к одному разделу только
+по похожему названию.
 
-Коммерческие AI-takeoff (Togal, Kreo Caddie, Beam, Attentive) = **computer-vision
-по чертежам** → детект/счёт элементов. **OurPlanCore** — наш аналог этого слоя.
-Но они дают только количества; **наш DFL-wiki + правила = слой ВЫШЕ** (что собрать
-+ правильно ли). Это не конкурент — это то, что идёт ПОСЛЕ замера.
+В старой заметке примеры `07.04 WD-01`, `05.01`, `07.01-07.03` из колонки E и notes
+DFL были названы CSI-кодами. Соответствие этих **проектных обозначений** MasterFormat
+здесь не подтверждено. Сохраняй обозначение из источника и проверяй его легенду.
 
-## Связь с DFL-wiki (output-сторона)
+## Как проверять правило
 
-Эта KB — про **как мерить** (takeoff). Парная Obsidian-wiki `wiki/E-Wood/` — про
-**что собрать в Excel** (DFL-блоки, формулы, валидация). Мост:
-`wiki/E-Wood/reference/takeoff-to-dfl.md` (токен ext/1st/porch → блок). Подробный
-ресёрч и CSI-маппинг — там же (`research-positioning.md`, `csi-mapping.md`).
+1. Найти лист, schedule, detail или раздел спецификации текущего проекта.
+2. Проверить, относится ли правило к этому материалу, узлу и scope.
+3. Для изделия открыть документацию производителя на нужную серию и исполнение.
+4. При конфликте источников записать вопрос и ссылку на оба места; не скрывать
+   предположение заменой материала.
+5. После расчёта пройти [QA checklist](../start/quality-checklist.md).
 
-## Источники
+Числа из других проектов и [Quantity benchmarks](quantity-benchmarks.md) помогают
+заметить необычное значение. Они не заменяют детали, нагрузки, спецификацию или
+подтверждённое правило расчёта.
 
-- RSMeans — [Unit & Assembly Estimates](https://www.rsmeans.com/resources/creating-unit-assembly-estimates-rsmeans-online)
-- Autodesk — [5 Steps to Lumber Takeoff](https://www.autodesk.com/blogs/construction/framing-lumber-takeoff/)
-- Procore — [CSI MasterFormat](https://www.procore.com/library/csi-masterformat); Swiftlane — [Div 06](https://swiftlane.com/blog/csi-masterformat-division-06/)
-- Togal.ai, Kreo, Trimble (AI takeoff 2026)
+## Программа и ИИ
+
+Текущий пользовательский процесс OurPlanCore описан в
+[руководстве](ourplanecore.md) и [быстром старте](ourplancore-start.md).
+Направления помощи ИИ и их ограничения — на странице
+[ИИ в takeoff](ai-assist-system.md).
+
+Сравнение возможностей коммерческих AI-takeoff продуктов здесь не поддерживается.
+Наличие автоматического распознавания не подтверждает правильность состава DFL;
+результат проверяется по проекту.
+
+## Где продолжить
+
+- RSMeans: [Unit & Assembly Estimates](https://www.rsmeans.com/resources/creating-unit-assembly-estimates-rsmeans-online) — материал об unit и assembly estimates.
+- Autodesk: [Lumber Takeoff](https://www.autodesk.com/blogs/construction/framing-lumber-takeoff/) — материал о процессе lumber takeoff.
+- [Workflow](../start/workflow.md) — порядок работы в этой KB.
+- [Материалы](material-catalog.md) и [Hangers](hangers.md) — предметные справочники.
+- [Стандартные notes](standard-notes.md) — как показывать предположения и вопросы.

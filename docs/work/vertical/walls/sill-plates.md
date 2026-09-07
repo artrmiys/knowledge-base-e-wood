@@ -92,7 +92,7 @@ Termite Shield по факту — это сплошной металличес�
 карточку и сверь похожий condition на плане/детали.
 
 ??? info "Источник картинок"
-    - Sill Plates (доска для бетона): [17 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/75333633/Sill+Plates)
+    - Sill Plates (доска для бетона): 17 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать ещё 14 иллюстраций</summary>

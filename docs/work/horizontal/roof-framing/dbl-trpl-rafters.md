@@ -35,12 +35,10 @@
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Dbl Trpl Rafters (двойные тройные стропила): [2 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/66093077/Dbl+Trpl+Rafters)
+    - Dbl Trpl Rafters (двойные тройные стропила): 2 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures kb-figures--rows" open>
   <summary>Скрыть 2 правил с иллюстрациями</summary>

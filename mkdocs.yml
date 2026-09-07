@@ -54,9 +54,15 @@ nav:
       - Структура takeoff: start/takeoff-structure.md
       - QA checklist: start/quality-checklist.md
       - Правила клиентов: start/client-rules.md
-      - Картинки и схемы: start/images-and-schemas.md
-      - Preview страницы: start/site-preview.md
-      - Поддержка: start/maintenance.md
+
+  - OurPlanCore:
+      - Начало работы: reference/ourplancore-start.md
+      - Интерфейс и инструменты: reference/ourplanecore.md
+      - Проекты и сохранение: reference/job-creation-storage.md
+      - Имена takeoffs: reference/takeoff-naming.md
+      - Горячие клавиши: reference/ourplancore-shortcuts.md
+      - Решение проблем: reference/ourplancore-troubleshooting.md
+      - Что нового: reference/ourplancore-changelog.md
 
   - Работа:
       - Типы работ:
@@ -165,9 +171,6 @@ nav:
 
   - Справочник:
       - Советы и важные вещи: reference/boss-feedback-rules.md
-      - Как называть takeoffs: reference/takeoff-naming.md
-      - OurPlanCore — программа: reference/ourplanecore.md
-      - Создание Job и хранение: reference/job-creation-storage.md
       - Hangers: reference/hangers.md
       - Hardware catalog (corpus): reference/hardware-catalog.md
       - Quantity benchmarks: reference/quantity-benchmarks.md
@@ -176,8 +179,12 @@ nav:
       - Takeoff item labels: reference/takeoff-items.md
       - Excel macro hotkeys: reference/excel-hotkeys.md
       - Формулы и факторы: reference/formulas.md
-      - Отраслевые стандарты: reference/industry-standards.md
+      - Термины и спецификации: reference/industry-standards.md
       - ИИ-ассистент и стратегия: reference/ai-assist-system.md
+      - Редактору KB:
+          - Обновление базы: start/maintenance.md
+          - Картинки и схемы: start/images-and-schemas.md
+          - Проверка оформления: start/site-preview.md
 
 plugins:
   - search:

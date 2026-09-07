@@ -127,13 +127,11 @@ corners, T-пересечения, jack/king/cripple и обрезь.
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Разное (QA feedback): [19 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/11796656/---)
-    - Need to sort: [4 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/229638146/Need+to+sort)
+    - Разное (QA feedback): 19 карт. Confluence (архивный источник; ссылка не публикуется)
+    - Need to sort: 4 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 23 иллюстраций</summary>

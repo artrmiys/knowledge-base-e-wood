@@ -31,12 +31,10 @@ post bases/sleeves). Cap rail и balusters не забывай отдельны�
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Railing - перила: [1 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/67043361/Railing+-)
+    - Railing - перила: 1 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 1 иллюстраций</summary>

@@ -26,12 +26,10 @@
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Anchor Bolts (анкерные болты): [2 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/72482856/Anchor+Bolts)
+    - Anchor Bolts (анкерные болты): 2 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 2 иллюстраций</summary>

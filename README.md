@@ -1,19 +1,56 @@
 # Estimating Knowledge Base
 
-Human-readable MkDocs wiki for estimating rules, takeoff workflow,
-COM/EWP job logic, recurring QA checks, and boss-feedback rules extracted from
-the local Obsidian vault.
+Рабочая база знаний по estimating, COM/EWP, takeoff, QA и OurPlanCore.
+Публичный сайт: [Estimating Knowledge Base](https://artrmiys.github.io/knowledge-base/).
 
-## Local Commands
+## Содержание
+
+- `Старт` — процесс работы, scope и проверка результата.
+- `OurPlanCore` — [начало работы](docs/reference/ourplancore-start.md),
+  [полный справочник инструментов](docs/reference/ourplanecore.md),
+  [проекты и сохранение](docs/reference/job-creation-storage.md),
+  [имена takeoffs](docs/reference/takeoff-naming.md),
+  [горячие клавиши](docs/reference/ourplancore-shortcuts.md),
+  [решение проблем](docs/reference/ourplancore-troubleshooting.md),
+  [что нового](docs/reference/ourplancore-changelog.md).
+- `Работа` — предметные правила по элементам и типам работ.
+- `Справочник` — формулы, материалы и источники; в конце — материалы редактора KB.
+
+Описание программы сверено с **2.2.7 Preview, 6 сентября 2026**. История выпусков,
+планы и текущие возможности обозначены отдельно. Обновление исходников KB не
+меняет установленную программу и не означает, что сайт уже опубликован.
+
+[Аудит и план улучшений](AUDIT.md) · [Реестр страниц](DOCUMENT_REGISTER.md) ·
+[Изменения](CHANGELOG.md) · [Правила обновления](docs/start/maintenance.md).
+
+## Локальная проверка
 
 ```powershell
-python -m mkdocs serve
-python -m mkdocs build --strict
+.\.venv\Scripts\python.exe -m mkdocs serve
+.\.venv\Scripts\python.exe -m mkdocs build --strict
 ```
 
-## Source Policy
+Для нового окружения используй `python -m venv .venv`, затем установи через
+его `python -m pip install mkdocs mkdocs-material mkdocs-material-extensions` —
+тот же набор пакетов указан в workflow публикации.
+Проверь страницы в браузере, поиск на русском и английском, узкий экран,
+светлую и тёмную темы. Для ссылок важен собранный HTML: raw HTML изображений
+может иметь пути, отличающиеся от обычных Markdown-ссылок.
 
-- Source notes live outside this repo in `C:\Users\User\Documents\0.Obsidian`.
-- This public wiki keeps work rules, checklists, and estimating logic.
-- Do not publish employee emails, UIDs, private salary tables, Dropbox links, or
-  other private operational data.
+## Публикация
+
+`.github/workflows/deploy.yml` содержит запуск по push в `main` и
+`workflow_dispatch`. Отдельно существует `tools/deploy.ps1` для ручной публикации.
+Запускать публикацию после согласования публичного изменения и успешной проверки.
+Не считать старую фразу «Actions на паузе» подтверждением текущего состояния GitHub.
+После публикации проверять результат workflow и реальный сайт, включая старые URL.
+
+## Источники
+
+- Рабочие исходники могут находиться во внешнем Obsidian vault, но в публичную KB
+  переносятся только пригодные к публикации правила и примеры.
+- Для программы указывай проверенную версию, действие пользователя и результат.
+  Для расчёта — единицы, источник, scope и пример проверки.
+- Архивная иллюстрация не доказывает поведение текущего EXE. Внутренняя статистика
+  не заменяет чертежи, спецификацию и согласованные правила проекта.
+- Не публикуй credentials, emails сотрудников, UID, выплаты и приватные рабочие ссылки.

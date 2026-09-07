@@ -21,12 +21,10 @@ Hip rafter длиннее и крупнее common rafter. Не путать с 
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Hip (балка примыкания крыши наружу): [1 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/66093087/Hip)
+    - Hip (балка примыкания крыши наружу): 1 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures kb-figures--rows" open>
   <summary>Скрыть 1 правил с иллюстрациями</summary>

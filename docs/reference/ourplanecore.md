@@ -2,34 +2,9 @@
 
 Локальная программа для takeoff по PDF — рабочее место estimator-а: PDF-viewer,
 дерево листов (Pages), дерево takeoff'ов (Takeoffs), Estimating и экспорт в Excel
-в одном окне. Близкий функциональный клон PlanSwift, всё **локально** (никакого
-облака). Эта страница — **гайд для пользователя**: что делает каждый инструмент,
-как им пользоваться и на что смотреть.
-
-<!--
-════════════════════════════════════════════════════════════════════════
-СКРИНШОТЫ — ПЕРЕСНЯТЬ ИЗ ТЕКУЩЕЙ СБОРКИ v2.2.5 (Артём подложит свежие кадры).
-Текст уже выверен по исходнику; скрины должны показывать именно новую версию.
-  • opc-main-view.png     — 5 лент (Main·Page·Annotation·Viewport·Display, БЕЗ PDF Output),
-                            строка режимов Main View/Settings, Pages слева, Takeoffs справа,
-                            tool strip снизу.
-  • opc-toolstrip.png     — оба ряда; кнопка Openings подписана "Open"; Record в строке НЕТ.
-  • opc-ribbon-main.png   — Main: JOB (Open/Import, PlanSwift, PDF Takeoffs) + PDF (Export;
-                            при вкл. Sheet Manager — Name/Scale/Name+Scale; при вкл. AI — AI Fill/Crop Hints).
-  • opc-ribbon-page.png   — Page: Add / Rotate / Flip / Image / Page.
-  • opc-ribbon-viewport.png — Viewport: Lines & Area, Ruler, PDF Snap Bridge.
-  • opc-modules.png       — Settings→Modules: 18 модулей в 5 группах, combo пресетов + кнопки.
-  • opc-pages-layers.png  — панель Pages с под-табом PDF Layers.
-  • opc-takeoffs-panel.png— панель Takeoffs (item + Record, под-табы, итог снизу).
-  • opc-3d.png            — вкладка 3D: Build / Rafters / Viewer (НЕ старый Massing).
-  • opc-ai-manager.png    — AI Manager: Setup / Review / Batch / Markers.
-  • opc-sheet-manager.png — Sheet Manager: сетка + Auto Name/Auto Scale/Name+Scale, Apply Checked.
-  • opc-takeoff-manager.png — Takeoff Manager: таблица items/sections.
-  • opc-materials.png     — вкладка Materials: Extract, Report Sheet, экспорт.
-  • opc-report-builder.png— вкладка Report Builder: Reload TemplateCom.xlsm, Apply Walls.
-  УДАЛИТЬ/НЕ ИСПОЛЬЗОВАТЬ: opc-ribbon-pdf-output.png — ленты PDF Output больше нет.
-════════════════════════════════════════════════════════════════════════
--->
+в одном окне. Основной takeoff работает локально; отдельно включаемые AI-команды
+отправляют выбранный фрагмент и запрос в OpenAI. Эта страница — **гайд для
+пользователя**: что делает каждый инструмент, как им пользоваться и на что смотреть.
 
 !!! tip "Интерфейс настраивается — по умолчанию показывается только основное"
     Программа умеет **много**, но для повседневной работы лишнее убрано. По
@@ -40,80 +15,14 @@
     удаляется: выключенный модуль просто спрятан, данные сохраняются.
 
 !!! note "Статус и обозначения"
-    Внутренняя программа, не публичный SaaS. На скриншотах скрыты job names,
-    sheet names и реальные takeoff names. Названия кнопок даны **как в интерфейсе**
-    (англ.), пояснение — рус.; тултипы в программе совпадают с этим. Системные пути
-    (`%APPDATA%\OurPlanCore\…`, `Documents\OurPlanCore Jobs`) — это имена на диске,
-    их оставляем как есть.
+    Гайд сверен с **2.2.7-preview, 06.09.2026**. Preview устанавливается отдельно;
+    старые версии могут показывать другие команды. Существующие скриншоты ниже —
+    **исторические иллюстрации**, а не снимки этой сборки: порядок, подписи и число
+    кнопок на них могут отличаться. Актуальный маршрут указан в тексте.
+    Английские названия сохраняют язык интерфейса; клавиши в таблицах —
+    **исходные назначения**, которые теперь можно [изменить](#hotkeys).
 
-??? abstract "🆕 Что нового — история обновлений (нажми, чтобы раскрыть)"
-
-    ### 07.2026 — Модульный интерфейс, Display-лента, новые инструменты
-
-    Крупный проход: программа переименована в **OurPlanCore**, интерфейс урезан до
-    основного, продвинутое вынесено в переключаемые модули.
-
-    - **Система модулей (`Settings → Modules`).** Функционал разбит на модули с
-      галочками: **Off прячет модуль везде и блокирует его команды**, данные проекта
-      при этом сохраняются. По умолчанию **выключены** Sheet Manager, Takeoff
-      Manager, Report Builder, Materials, AI и 3D — поэтому «из коробки» окно чистое.
-      Настройка резолвится **job override → global preset → default**
-      (см. [Модули](#modules)).
-    - **Только две «пилюли» рабочих режимов** — `Main View` и `Settings`. Остальные
-      табы-менеджеры появляются в строке **только когда включён их модуль**.
-    - **Отдельная лента `Display`** — все экранные тумблеры (Labels, Legend, `Fast
-      pan/zoom`, `PDF layers`, `Static image`, `Black vector`, `ft/sf`, фон вьюпорта
-      и страницы, `Dark`) собраны в одну ленту, отдельно от `Viewport` (там теперь
-      только толщины/заливки и PDF-Snap `Bridge`).
-    - **`P Line` — точки вдоль линии.** Новый инструмент: проводишь линию →
-      программа расставляет **равномерные count-метки** вдоль неё (посты, пикеты,
-      hangers по шагу).
-    - **`Combine ▾` — булевы операции над Area:** `Union` (объединить), `Subtract`
-      (вычесть), `Intersect` (только пересечение), `Remove Overlap` (убрать двойной
-      счёт), `Divide` (разбить на эксклюзивные + перекрытие).
-    - **Базовое именование/масштаб листа — всегда под рукой.** Кнопки `Name` /
-      `Scale` / `Name+Scale` живут внизу панели Pages и работают **без** модуля
-      Sheet Manager (полный менеджер листов — уже опция).
-    - **Static image page mode** (PlanSwift-style): лист можно показывать как единый
-      растр (`Display → Static image`), плюс `Black vector` для чёткой чёрной
-      графики. **Extra Joists** — быстрый непрерывный докид лаг (++d++ в выбранной
-      Joist Area).
-
-    ### 22.06.2026 — Обновление интерфейса: деревья, Annotation, выделение
-
-    - **Иконки папок** в деревьях (Pages и Takeoffs): папка **закрашена**, если
-      внутри есть данные (в любой вложенности), и **пустой контур**, если пусто.
-    - **Чёткое выделение строк** в `Bookmarks` и `AI Inbox` (сплошная заливка как в
-      деревьях, не тускнеет при потере фокуса).
-    - **Аннотации** переоформлены: инструменты (`Highlight` / `Draw` / `Arrow` /
-      `Box` / `Cloud` / `Area` / `Note`) с иконками; толщина (`Width`) и палитра —
-      прямо в ленте.
-
-    ### 06–15.06.2026 — Count Similar, multiline, стропила, надёжность v2
-
-    - **Count Similar** (`Similar` рядом с `Count`): обводишь один символ → программа
-      находит похожие на листе **офлайн**; порог + пресеты `Strict`/`Default`/`Loose`,
-      опц. повороты/зеркало, опц. перепроверка AI, добавление одним undo-шагом.
-    - **Multiline** — линия с авто-офсетами (до 2 компаньон-линий со своим именем,
-      цветом, расстоянием и стороной).
-    - **Символы `Count`** — полный набор из 7 (circle, cross, square, star, triangle,
-      diamond, ring).
-    - **Merge / Split** — перенос сегментов в другой (`Merge`, ++ctrl+m++) или в новый
-      (`Split`, ++ctrl+shift+m++) takeoff.
-    - **Надёжность v2:** атомарная запись `Data.xml`, **переносимый job**
-      (относительные пути), повторы AI-запросов, видимые ошибки AI, авто-архив/ротация
-      логов.
-
-    ### Май–Июнь 2026 — производительность, raster, снап, 3D
-
-    - **Viewport «молниеносно»:** coalescing render-запросов, большие RAM-кэши,
-      clipped detail-тайлы (чёткий текст на высоком зуме), prefetch соседних листов.
-    - **Raster-листы:** сканы и PlanSwift image-листы открываются напрямую;
-      строгий snap по чёрным линиям через `raster\snap.json`.
-    - **PDF contour snap** (`Area` + `PDF Snap` + ++tab++) — трассировка внешнего
-      контура здания. :material-progress-wrench: в доработке.
-    - **3D per-edge roof** и **3D Massing** (AI-черновик здания) — теперь модуль `3D`.
-    - **F1 cheat-sheet overlay**, **Takeoff Templates dock**, **Transform popup**.
+История изменений вынесена в [Что нового](ourplancore-changelog.md).
 
 ## Что видно по умолчанию { .kb-section-title .kb-st--cyan }
 
@@ -122,13 +31,14 @@
 
 <figure markdown>
   ![Main View — общий вид](../assets/images/ourplanecore/opc-main-view.png)
-  <figcaption>Верхние ленты, слева <code>Pages</code>, по центру PDF-вьюпорт, справа <code>Takeoffs</code>, снизу — tool strip. Строка режимов — всего две «пилюли»: <code>Main View</code> и <code>Settings</code>.</figcaption>
+  <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Верхние ленты, слева <code>Pages</code>, по центру PDF-вьюпорт, справа <code>Takeoffs</code>, снизу — tool strip. Строка режимов — всего две «пилюли»: <code>Main View</code> и <code>Settings</code>.</figcaption>
 </figure>
 
-- **Сверху — ленты команд:** `Main` · `Page` · `Annotation` · `Viewport` · `Display`
-  (лента `Annotation` появляется только с модулем Annotations). Под ними — строка
-  режимов (`Main View` / `Settings`). Отдельной ленты `PDF Output` **нет** — экспорт
-  PDF живёт кнопкой `Export` в ленте `Main` и в output-настройках.
+- **Сверху — шесть лент команд:** `Main` · `Page` · `Annotation` · `PDF Output` ·
+  `Viewport` · `Display`. `Annotation` и `PDF Output` видны при включённых
+  одноимённых модулях. Под ними — строка рабочих режимов (`Main View` / `Settings`
+  и включённые менеджеры). Экспорт — `Main → Export`, настройка и живое превью —
+  `PDF Output`.
 - **Слева — `Pages`:** дерево листов и папок, под-табы `Pages` / `PDF Layers` /
   `Overlay` / `Bkm`.
 - **По центру — вьюпорт:** сам чертёж с overlay замеров; вкладки открытых листов
@@ -157,7 +67,8 @@
 
     ---
 
-    `Count`, `Line`, `Area`, `J Area`, `Scale`, `Ruler` + продвинутые
+    `Count`, `Line`, `Area`, `Scale` + включённые по умолчанию инструменты модулей:
+    `Ruler`, `J Area` и продвинутые
     (`Beam`, `Openings`, `Cut`, `P Line`, `Similar`, `Combine`).
 
 -   :material-folder-tree:{ .lg .middle .kb-mk--green } **Pages / Takeoffs** · *core*
@@ -194,8 +105,9 @@
 
 Короткий маршрут от пустого экрана до экспорта на **основном** наборе функций.
 
-1. **Создать / открыть job.** Лента `Main` → `Open / Import` (++ctrl+o++) —
-   открыть/создать job или импортировать PDF. Недавние — ++ctrl+shift+o++.
+1. **Создать / открыть job.** Лента `Main` → `Open / Import` → `Open project...`
+   либо одна из команд создания. ++ctrl+o++ открывает выбор проекта напрямую;
+   ++ctrl+shift+o++ открывает тот же выбор с недавними проектами.
 2. **Импорт PDF.** `Open / Import` → добавить PDF (или лента `Page` → `Add Pages`).
    В окне импорта решаешь, строить ли **растровый кэш + snap** (см. [Создание job](#job)).
 3. **Разложить листы.** Слева `Pages` → `+ New` (папки) / `Auto Folders`; порядок
@@ -203,14 +115,20 @@
    внизу панели (или ++f5++ / ++f4++).
 4. **Открыть лист.** Клик по листу в дереве `Pages`. Проверить масштаб (`Scale`) и
    при необходимости слои (`PDF Layers`).
-5. **Создать / выбрать takeoff item.** Дерево `Takeoffs` справа → `New Item`
-   (или ++t++). Имя — по [правилам naming](takeoff-naming.md).
-6. **Рисовать.** Выбрать tool (`Count`/`Line`/`Area`/`J Area`), включить `Record`
-   (++space++), обвести. Для `Line`/`Area` обязателен `Scale`. Включи **привязки**
-   (`Snap`/`PDF Snap`) — линии лягут точно по чертежу (см. [Привязки](#snap)).
+5. **Выбрать цель записи.** Для нового item нажми `Count`/`Line`/`Area`/`J Area`
+   и задай свойства. Для существующего выбери его в `Takeoffs` и включи `Record`
+   (++space++). Альтернатива создания — `New Item` (++t++), затем Record у этого
+   item. Имя — по [правилам naming](takeoff-naming.md).
+6. **Рисовать.** Проверь активный item и состояние Record, затем обводи.
+   Повторная кнопка инструмента создаёт **новый** item; чтобы продолжить тот же,
+   пользуйся Record. Для `Line`/`Area` обязателен `Scale`. `Snap`/`PDF Snap`
+   помогают ставить точки, но найденный угол нужно проверять (см. [Привязки](#snap)).
 7. **Проверить.** Под-таб `Estimating` (справа) или `Open Estimating` — totals,
    sections, notes; `Current-sheet filter` — только активный лист.
-8. **Экспорт.** `Export` (в дереве Takeoffs) → `CSV` / `TXT` / `Excel`, либо
+8. **Сохранить и экспортировать.** ++ctrl+s++ сохраняет проект, `Main → Save As`
+   (++ctrl+shift+s++) создаёт копию в новом месте. `PDF Output → Preview` проверяет
+   PDF текущего листа; `Main → Export` экспортирует выбранные/все листы.
+   `Export` (в дереве Takeoffs) → `CSV` / `TXT` / `Excel`, либо
    `Current Excel` — пишет в **уже открытый** workbook от активной ячейки
    (auto-save **нет**).
 
@@ -222,19 +140,23 @@
 
 ## Создание job, папок и что появляется автоматически { #job .kb-section-title .kb-st--orange }
 
-**Job — это одна папка на диске.** Всё внутри: исходные PDF, листы, takeoff'ы,
-AI-контекст, настройки. Ничего в облаке. Скопировал/забэкапил папку — сохранил всю
-работу.
+**Проект бывает файлом `.ourplan` или существующей папкой job.** Новые проекты
+создаются как `.ourplan`; старые папки продолжают открываться. При работе с пакетом
+программа использует локальную рабочую копию и сохраняет её обратно в `.ourplan`.
+`Save As` сохраняет формат открытого проекта: пакет остаётся пакетом, папка —
+папкой. Перед переносом дождись успешного сохранения. Подробности резервных копий,
+восстановления и локальной рабочей копии — [Создание Job и хранение](job-creation-storage.md).
 
 ### Создать / открыть job
 
-Всё начинается с `Open / Import` (++ctrl+o++). Меню: секция **OPEN A JOB**
-(`Recent jobs...`, `Open a job from a folder...`) и секция **CREATE A NEW JOB**:
+Всё начинается с `Main → Open / Import`. В секции **OPEN A PROJECT** команда
+`Open project...` открывает общий выбор `.ourplan` и существующих папок.
+В секции **CREATE A NEW JOB**:
 
 | Пункт | Что происходит |
 | --- | --- |
-| `New job from a folder of PDFs...` | Указываешь папку → программа ищет `*.pdf` рекурсивно, просит имя job и **сразу импортирует все PDF**. |
-| `Blank job - start empty, add sheets later` | Пустой job без листов. Листы добавишь потом (`Add Pages`, `Blank Sheet`). |
+| `New project from a folder of PDFs...` | Указываешь папку с PDF и место нового `.ourplan`; программа импортирует найденные PDF. |
+| `Blank project - start empty` | Новый `.ourplan` без листов. Листы добавишь потом (`Add Pages`, `Blank Sheet`). |
 | `Import PDF Takeoffs...` | Импорт PDF **вместе с замерами-аннотациями** как редактируемые takeoff'ы. Сначала превью, файлы — после подтверждения. |
 | `Sample job (demo to explore)` | Демо-job `OurPlanCore Guide Sample` — потрогать интерфейс без своих данных. |
 
@@ -270,6 +192,10 @@ AI-контекст, настройки. Ничего в облаке. Скоп�
 
 ### Что создаётся на диске автоматически
 
+Это **внутренняя структура** проекта. У folder-job она видна непосредственно,
+у `.ourplan` находится в пакете и его рабочей копии; редактировать её вручную
+для обычной работы не требуется.
+
 ```text
 <job>\
 ├─ Data.xml        ← карточка job (имя, тип, GUID)         [авто]
@@ -295,13 +221,16 @@ AI-контекст, настройки. Ничего в облаке. Скоп�
 
 ## Инструменты замера { #tools .kb-section-title .kb-st--amber }
 
-Логика одна: **выбрал tool → выбрал активный takeoff item → включил `Record`
-(++space++) → рисуешь во вьюпорте.** Результат сразу падает в quantity активного
-item. Ниже — каждый инструмент подробно.
+Для **нового item** кнопки `Count`, `Line`, `Area`, `J Area` открывают создание
+подходящего типа и начинают Record после подтверждения. Для **продолжения
+существующего** выбери item в Takeoffs и нажми его `Record` (++space++).
+Проверяй имя активного item: простое выделение объекта и цель записи — разные
+состояния. Результат добавляется в quantity цели записи, а аннотации хранятся
+отдельно от quantity. Ниже — каждый инструмент подробно.
 
 <figure markdown>
   ![Tool strip](../assets/images/ourplanecore/opc-toolstrip.png)
-  <figcaption>Tool strip, ряд 1: <code>Pan/Select/Scale/Ruler</code> · <code>Count/Similar/P Line/Line/Area/J Area/Beam/Open/Cut</code> · <code>Merge/Split/Combine</code> · <code>Snap/PDF/Ortho/Box</code>, справа — <code>Excel</code>. Ряд 2 — <code>Transform</code> (Flip H/Flip V/Rot/Scale), настройка масштаба (<code>Set</code>/<code>Presets</code>) и <code>Fit/+/−</code>. Кнопка Openings подписана <code>Open</code>. <code>Record</code> тут нет — он на правом Active-Takeoff баре (++space++).</figcaption>
+  <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Tool strip, ряд 1: <code>Pan/Select/Scale/Ruler</code> · <code>Count/Similar/P Line/Line/Area/J Area/Beam/Open/Cut</code> · <code>Merge/Split/Combine</code> · <code>Snap/PDF/Ortho/Box</code>, справа — <code>Excel</code>. Ряд 2 — <code>Transform</code> (Flip H/Flip V/Rot/Scale), настройка масштаба (<code>Set</code>/<code>Presets</code>) и <code>Fit/+/−</code>. Кнопка Openings подписана <code>Open</code>. <code>Record</code> тут нет — он на правом Active-Takeoff баре (++space++).</figcaption>
 </figure>
 
 **Шпаргалка по всем инструментам:**
@@ -311,14 +240,15 @@ item. Ниже — каждый инструмент подробно.
 | `Pan` | ++v++ | — (навигация) | — | core |
 | `Select` | ++e++ | — (правка) | — | core |
 | `Scale` | ++s++ | масштаб листа | — | core |
-| `Ruler` | ++r++ | временный размер | ✔ | Annotations |
+| `Ruler` | ++r++ | размерная аннотация, без quantity | ✔ | Annotations |
+| `Pitch` | — | уклон `rise:12`, без quantity | ✘ | Annotations |
 | `Count` | ++p++ | `ea` | ✘ | core |
 | `Line` | ++l++ | `lf` | ✔ | core |
 | `Area` | ++a++ | `sf` | ✔ | core |
 | `J Area` | ++j++ | `ea` + `lf` | ✔ | Advanced |
 | `Similar` | — | `ea` | ✘ | Advanced |
 | `P Line` | — | `ea` | ✔* | Advanced |
-| `Beam` | ++b++ | `ea` + `lf` | ✔ | Advanced |
+| `Beam` | ++b++ | `ea`; длина в имени/размере | ✔ | Advanced |
 | `Openings` | ++o++ | `ea` (+ размер) | ✔ | Advanced |
 | `Cut` | ++x++ | вырез/стирание | — | Advanced |
 | `Combine` | — | булевы над Area | — | Advanced |
@@ -363,10 +293,21 @@ item. Ниже — каждый инструмент подробно.
 
     **Что:** быстро замерить расстояние на лету, **не создавая** takeoff item.
     **Как:** ++r++ → провести по чертежу; показывается длина. В quantity ничего не
-    пишется — это просто «прикинуть размер».
+    пишется. Размер остаётся аннотацией листа: его можно выбрать, удалить или
+    скрыть; это не временная строка quantity.
     **Когда:** проверить зазор, ширину комнаты, шаг — там, где заводить отдельный
     замер не нужно.
     **Модуль:** `Annotations` (если модуль выключен, `Ruler` скрыт).
+
+=== "Pitch — уклон по двум точкам"
+
+    **Что:** аннотация уклона `rise:12` на разрезе/фасаде.
+    **Как:** `Pitch` → два клика вдоль видимой наклонной линии. Подпись остаётся
+    на листе; takeoff quantity и параметры 3D-крыши автоматически не меняются.
+    Масштаб для отношения высоты к горизонтальному пролёту не требуется, но
+    изображение должно сохранять одинаковые пропорции по осям.
+    Это не одноимённый инструмент 3D Roof guide. Исходной клавиши нет; её можно
+    назначить в редакторе. **Модуль:** `Annotations`.
 
 ### Основные замеры { .kb-st--green }
 
@@ -395,10 +336,16 @@ item. Ниже — каждый инструмент подробно.
     компаньон-линий с собственным именем, цветом, отступом и стороной (диалог
     `New Item`, тип `Line`, секция «Offset lines»).
 
+    **Repeat Line:** отдельная кнопка с символом повтора рядом с `Line` создаёт
+    Line-item и оставляет режим включённым. Каждая пара кликов даёт **отдельный
+    двухточечный замер**, а не продолжение ломаной. `Esc` завершает режим и
+    отбрасывает незаконченный отрезок. Обычная `Line` сохраняет прежнее поведение.
+
 === "Area — площадь (A) → sf"
 
     **Что:** площади — sheathing, кровля/перекрытие, плита, drywall, покрытия.
-    **Как:** ++a++ → обвести полигон, ++c++ замкнуть. Площадь = shoelace по вершинам.
+    **Как:** ++a++ → обвести полигон, ++c++ замкнуть. Площадь рассчитывается
+    по контуру с масштабом замера и вычетом отверстий.
     ++f9++ — прямоугольный (box) режим. **Требует `Scale`.**
     **Проёмы:** `Cut` (++x++) вырезает дырки, чтобы `sf` считалась без них.
     **Внешний контур здания:** `PDF Snap` + ++tab++ — трассировка footprint'а без
@@ -414,6 +361,11 @@ item. Ниже — каждый инструмент подробно.
     расставляет joist по шагу и считает count + LF. Лейблы видны по умолчанию.
     **Extra Joists:** выдели готовую Joist Area и жми ++d++ — **непрерывный докид**
     одиночных лаг (double/triple, добор у проёма); ++d++ ещё раз или ++esc++ — выйти.
+    **Таблица Joist Area:** в свойствах item включи `Move joist note`, затем в
+    `Select` перетащи таблицу. По умолчанию перемещение выключено; отключение
+    фиксирует сохранённую позицию. ++ctrl+z++ отменяет перемещение, ++esc++
+    отменяет текущий drag. Работает на главном и откреплённом листе, положение
+    сохраняется в проекте и учитывается в PDF.
     **Когда:** перекрытия, стропильные поля, где нужен и счёт, и погонаж за один
     проход.
 
@@ -436,10 +388,16 @@ item. Ниже — каждый инструмент подробно.
     - опц. галки **поворота** 90/180/270° и **зеркала** — ловит развёрнутые символы;
     - опц. **перепроверка AI** (только при заданном OpenAI-ключе) — кроп уходит в
       `AI Inbox`;
-    - `Add` — метки добавляются **одним undo-шагом** в активный Count-item или в новый
+    - `Add` — проверенные метки добавляются в активный Count-item или в новый
       `Similar Count`.
 
-    **Ограничение:** v1 — только **текущий** лист, по чёрно-белому контуру.
+    **Другие листы:** `Search all sheets in this job` — отдельная опция,
+    по умолчанию выключена. Поиск ограничен 80 другими листами; статус сообщает
+    пропуски и дополнительные совпадения, которые будут добавлены после `Add`.
+    Для текстовых Beam/Openings нужны подтверждённые текстом и изображением
+    кандидаты; отсутствие таких данных может исключить лист из поиска.
+    Сначала проверь образец и текущий лист: визуальное сходство не гарантирует
+    одинакового назначения объекта.
 
 === "P Line — точки вдоль линии (ea)"
 
@@ -454,13 +412,26 @@ item. Ниже — каждый инструмент подробно.
     **Совет:** сначала нарисуй трассу как `Line` с нужной длиной, потом конвертируй —
     получишь и погонаж, и точный счёт стоек за один шаг.
 
-=== "Beam — балка (ea + lf)"
+=== "Beam — балка (Count + измеренная длина)"
 
     **Что:** замер балки «в одно действие»: меряешь длину — программа **сама создаёт
     Count-item**, именует его по длине и ставит **первую** count-метку.
     **Как:** ++b++ → провести по балке → подтвердить имя item. Дальше можно доставлять
     метки обычным `Count`. Удобно для beam / header / GLB: и длина посчитана, и
     контейнер заведён.
+
+    **Quantity этого item — `ea`.** Измеренная и заказная длина используются в
+    размере/имени и размерной аннотации; это не отдельный Line-item с суммой LF.
+    Не считай надпись длины вторым количеством автоматически.
+    В диалоге можно включить `Review similar Beam marks on this sheet` и
+    дополнительную annotation line. Её дефолт, цвет и отступ размерной линии
+    задаются в `Settings → Defaults`; дополнительная линия по умолчанию выключена.
+    При отмене создания Count-item измерительная аннотация остаётся на листе.
+
+    **Repeat Beam:** соседняя кнопка повтора оставляет Beam активным после
+    подтверждения каждого нового item. Следующая пара точек создаёт следующую
+    балку. `Esc` или отмена диалога останавливает повтор. Доступно также в
+    откреплённом окне, с масштабом и привязкой к его листу.
 
 === "Openings — проёмы (ea)"
 
@@ -469,6 +440,9 @@ item. Ниже — каждый инструмент подробно.
     **в центре** проёма.
     **Как:** ++o++ → растянуть бокс по проёму → подтвердить (имя по умолчанию = размер,
     правится). Для окон/дверей/beam-openings, когда нужен и счёт, и типоразмер.
+    `Review similar Opening marks on this sheet` запускает проверку похожих
+    проёмов после создания item. Размерные аннотации сохраняются и при отмене
+    Count-item; их удаление — отдельная правка аннотаций.
 
 === "Cut — вырез / стирание (X)"
 
@@ -554,9 +528,42 @@ item. Ниже — каждый инструмент подробно.
   редактируются грипами.
 - **Line cut / Area cut** — разрез линии или вырез в площади на месте (++x++).
 
+### Копирование замеров между листами
+
+1. В `Select` выдели нужные замеры и нажми ++ctrl+c++.
+2. Открой целевой лист в главном или откреплённом окне, укажи место вставки и
+   нажми ++ctrl+v++ либо выбери Paste в контекстном меню вьюпорта.
+3. В `Paste Measurements` выбери **`Same takeoffs`** (те же items; отсутствующие
+   исходные items будут воссозданы) или **`New takeoffs`** (отдельные items с теми же
+   видимыми именами и свойствами). `Cancel` не вставляет данные.
+
+Верхний левый угол границ скопированного набора привязывается к точке вставки.
+Форма в координатах листа не растягивается автоматически: на масштабированном
+целевом листе применяется **его scale**, поэтому рассчитанные длины/площади могут
+измениться. Если у листа нет scale, для Line/Area требуется подтверждение
+использования сохранённого масштаба замеров; без него вставка блокируется.
+Проверь известный размер после переноса между листами разных масштабов.
+
+Сохраняются отверстия, Count symbols, notes и Joist-параметры; новые замеры
+получают новые IDs. Вид не перескакивает, соответствующие строки Takeoffs
+выделяются, другие открытые окна обновляются. ++ctrl+z++ отменяет вставку;
+созданные этой вставкой пустые новые items также убираются, если после вставки
+их не редактировали и не добавляли в них файлы. Для вставки нужен
+доступный для записи проект. Копирование **узлов деревьев** — отдельная операция
+с выбранной папкой назначения, а не вставка у курсора.
+
+### Зеркало и преобразования
+
+`Transform → Flip H / Flip V`, поворот и масштаб работают с **выбранными
+замерами**. Команды `Mirror selected objects horizontally` и `Mirror selected
+objects vertically` можно назначить в [редакторе клавиш](#hotkeys); исходных
+клавиш у них нет. Это отличается от `Page → Flip → Horizontal / Vertical`,
+которые изменяют изображение самого листа и связанную геометрию. Перед командой проверь выбор;
+для замеров доступно Undo.
+
 ## Ленты команд (ribbons) { .kb-section-title .kb-st--cyan }
 
-Верхняя полоса — пять лент (`Main` · `Page` · `Annotation` · `Viewport` · `Display`).
+Верхняя полоса — шесть лент (`Main` · `Page` · `Annotation` · `PDF Output` · `Viewport` · `Display`).
 Основные — `Main`, `Page`, `Display`.
 
 ??? note "Лента `Main` — job и экспорт"
@@ -566,6 +573,7 @@ item. Ниже — каждый инструмент подробно.
     | `Open / Import` | Открыть job, сменить папку, создать job или импортировать PDF |
     | `PlanSwift` | Отдельный конвертер PlanSwift-проекта |
     | `PDF Takeoffs` | Импорт PDF с замерами-аннотациями |
+    | `Save As` | Копия проекта в новое место с сохранением его формата (++ctrl+shift+s++) |
     | `Export` | Экспорт выбранных/всех листов в PDF |
 
     *С включённым модулем Sheet Manager здесь дополнительно появляются
@@ -573,7 +581,7 @@ item. Ниже — каждый инструмент подробно.
 
     <figure markdown>
       ![Ribbon Main](../assets/images/ourplanecore/opc-ribbon-main.png)
-      <figcaption>Лента <code>Main</code> (дефолт): Open/Import, PlanSwift, PDF Takeoffs, Export.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Лента <code>Main</code> (дефолт): Open/Import, PlanSwift, PDF Takeoffs, Export.</figcaption>
     </figure>
 
 ??? note "Лента `Page` — работа со страницей"
@@ -586,9 +594,17 @@ item. Ниже — каждый инструмент подробно.
     | `Image` | `Invert`, `Copy` (PNG в буфер), `Crop New Page` |
     | `Page` | `Batch Rename`, `Set Origin`, `Offset Origin`, `Close Page` |
 
+    `Rotate`, `Flip`, `Invert` и ненулевой `Level` — **сохраняемые изменения**
+    листа, а не временный поворот камеры. Программа создаёт растровый PDF-вариант
+    и назначает его источником листа; при повороте/зеркале также перемещает точки
+    замеров и аннотаций этого листа. Для таких действий полезно заранее иметь
+    отдельную сохранённую копию проекта. `Level` принимает угол от −45° до 45°;
+    нулевой угол только вписывает вид. `Crop New Page` создаёт новый лист из
+    видимой области, не заменяя исходный.
+
     <figure markdown>
       ![Ribbon Page](../assets/images/ourplanecore/opc-ribbon-page.png)
-      <figcaption>Лента <code>Page</code>: Add, Rotate, Flip, Image, Page.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Лента <code>Page</code>: Add, Rotate, Flip, Image, Page.</figcaption>
     </figure>
 
 ??? note "Лента `Viewport` — толщины и заливки на экране"
@@ -603,14 +619,14 @@ item. Ниже — каждый инструмент подробно.
 
     <figure markdown>
       ![Ribbon Viewport](../assets/images/ourplanecore/opc-ribbon-viewport.png)
-      <figcaption>Лента <code>Viewport</code>: Lines &amp; Area, Ruler, PDF Snap Bridge.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Лента <code>Viewport</code>: Lines &amp; Area, Ruler, PDF Snap Bridge.</figcaption>
     </figure>
 
-??? note "Output-настройки экспорта PDF (не лента)"
+??? note "Лента `PDF Output` — экспорт и живое превью"
 
-    Отдельной ленты `PDF Output` нет. То, **как замеры/markups лягут в экспортный
-    PDF**, задаётся в **output-настройках** (модуль **PDF Output**), а сам экспорт —
-    кнопкой `Export` в ленте `Main`:
+    Лента **`PDF Output`** задаёт, как замеры и markups попадут в экспортный PDF.
+    Она видна при включённом модуле **PDF Output**. `Viewport` и `Display`
+    управляют экраном, а экспортные толщины и заливки задаются здесь отдельно:
 
     | Контрол | Действие |
     | --- | --- |
@@ -618,6 +634,19 @@ item. Ниже — каждый инструмент подробно.
     | `Labels` | Какие value-лейблы включать |
     | Overlays `Legend` / `Header` | Легенда / заголовок масштаба |
     | `Include` `Meas` / `Markups` | Включать замеры / аннотации |
+    | `Include` `Legend` / `Extra glow` | Легенда и свечение Extra Joists в PDF |
+    | `Preview` | Открыть живое превью PDF текущего листа |
+
+    **Проверка перед экспортом:** открой нужный лист → `PDF Output → Preview`.
+    Это отдельное немодальное окно: меняй толщины, заливку, лейблы и включаемые
+    элементы в ленте, результат обновляется без повторного открытия. Колесо
+    приближает к курсору, правая кнопка двигает вид, `Fit` вписывает лист.
+    `Esc` прекращает текущий pan; окно закрывается его кнопкой закрытия.
+    Zoom/pan сохраняются при обновлении настроек.
+    Preview закреплён за листом, выбранным при открытии (включая активное
+    откреплённое окно). Для другого листа открой Preview заново.
+    `Save PDF...` сохраняет показанный PDF; выбранные/все листы экспортируются
+    через `Main → Export`.
 
     *Выключишь модуль PDF Output — кнопка `Export` и эта вкладка настроек пропадут.*
 
@@ -667,9 +696,13 @@ item. Ниже — каждый инструмент подробно.
         листе доступен, если у него задан масштаб (масштаб листа в главном окне
         не важен).
 
+        Beam, Openings, повторные Line/Beam, вставка, зеркало и Undo используют
+        лист активного окна. Для линейных/площадных инструментов нужен scale
+        именно этого листа; Count остаётся счётным инструментом без scale.
+
     <figure markdown>
       ![Pages panel](../assets/images/ourplanecore/opc-pages-layers.png)
-      <figcaption>Панель <code>Pages</code> с открытым под-табом <code>PDF Layers</code>: Load / All On / All Off / Clear Hi / Layer Trace / Apply.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Панель <code>Pages</code> с открытым под-табом <code>PDF Layers</code>: Load / All On / All Off / Clear Hi / Layer Trace / Apply.</figcaption>
     </figure>
 
 ??? note "Правая панель `Takeoffs`"
@@ -683,8 +716,23 @@ item. Ниже — каждый инструмент подробно.
 
     <figure markdown>
       ![Takeoffs panel](../assets/images/ourplanecore/opc-takeoffs-panel.png)
-      <figcaption>Панель <code>Takeoffs</code>: активный item + Record, под-табы, дерево, итоговая сумма снизу.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. Панель <code>Takeoffs</code>: активный item + Record, под-табы, дерево, итоговая сумма снизу.</figcaption>
     </figure>
+
+### Деревья, имена и отмена
+
+- Copy/Paste/Duplicate сохраняют **точное видимое имя** Pages и Takeoffs;
+  `Copy` и `(2)` к названию не добавляются. Уникальность внутренних папок
+  обеспечивается отдельно.
+- Новое открытие job заканчивается свёрнутыми деревьями. При обновлении деревьев
+  во время работы сохраняются пользовательские раскрытия; команда перехода к
+  выбранному листу/замеру может раскрыть его предков. ++minus++ сворачивает оба дерева.
+- ++ctrl+z++ с фокусом в дереве возвращает его последнее удаление; с фокусом
+  во вьюпорте отменяет правку геометрии. Для сортировок есть отдельные
+  `Open / Import → Undo Last Page Sort` и `Undo Last Page Operation`.
+- Если загрузка сообщает повреждённые данные, используй
+  `Open / Import → Project Data Recovery...` и [инструкцию восстановления](job-creation-storage.md).
+  Повторное обычное Save не должно подменять нечитаемый файл пустыми данными.
 
 ### Bookmarks · Templates · docks { #docks }
 
@@ -716,14 +764,14 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
 
 ## Modules — что показывать { #modules .kb-section-title .kb-st--orange }
 
-`Settings → Modules` — единственное место, где включается/выключается функционал.
+`Settings → Modules` — место включения/выключения модулей.
 **Off прячет модуль везде и блокирует его команды; сохранённые данные проекта
 остаются.** Так интерфейс держится чистым: основное включено, продвинутое — по
 желанию.
 
 <figure markdown>
   ![Settings → Modules](../assets/images/ourplanecore/opc-modules.png)
-  <figcaption><code>Settings → Modules</code>: категории Productivity / Documents / Takeoff / Output / Assistance; галочки + Load preset / Reset / Apply / Save global / Save for this job / Clear job override.</figcaption>
+  <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>Settings → Modules</code>: категории Productivity / Documents / Takeoff / Output / Assistance; галочки + Load preset / Reset / Apply / Save global / Save for this job / Clear job override.</figcaption>
 </figure>
 
 | Категория | Модуль | По умолчанию |
@@ -753,7 +801,7 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
     - `Apply` — применить **прямо сейчас, но не сохраняя** (в статусе будет
       «Live Apply (not saved)»); переживёт до перезапуска только после Save.
     - `Save global` — сделать набор глобальным дефолтом
-      (`%LOCALAPPDATA%\OurPlanCore\presets\modules.json`).
+      в профиле текущей версии приложения.
     - `Save for this job` — override только для открытого job
       (`<job>\AI_Context\settings\modules.json`).
     - `Clear job override` — снять job-override, вернуться к global/default.
@@ -761,13 +809,38 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
     - `Load preset` — загрузить набор из combo: `Current default` / `All modules on` /
       `Takeoff Only` / `Minimal`.
 
-    Здесь же — редакторы других правил (Page Folders, Auto Tree, From Pages,
-    Takeoff Templates, Sort A/S, Sort D/Sec/WT, Auto Rename/Scale, Project Storage,
-    Defaults) с той же логикой job/global/default.
+    У других редакторов Settings есть собственные правила сохранения — см. ниже.
+
+### Остальные разделы Settings
+
+| Раздел | Что настраивает |
+| --- | --- |
+| `Page Folders` | Имена и порядок стандартных папок листов COM/EWP |
+| `Auto Tree` | Стандартное дерево takeoff-папок |
+| `From Pages` | Правила построения дерева из Pages |
+| `Takeoff Templates` | Сохранённые структуры takeoffs для повторного применения |
+| `Sort A/S` / `Sort D/Sec/WT` | Правила сортировки и распределения листов |
+| `Auto Rename / Scale` | PDF-метаданные, шаблоны поиска и масштаба, layout-подсказки |
+| `Excel Actions` | Кнопки и последовательности Excel macro workflow |
+| `Project Storage` | Анализ места и ссылок; предварительный просмотр и отдельное подтверждение compact snap.json |
+| `Keyboard Shortcuts` | Открыть отдельный [редактор клавиш](#hotkeys) |
+| `Defaults` | Шаг зума, фоновый прогрев, очистка лишнего raster cache при закрытии, DPI, Beam annotations и вид дерева |
+
+**Сохранение различается:** Modules имеет временный `Apply` и отдельные Save;
+Keyboard Shortcuts применяет черновик только после Save. Изменения в
+`Page Folders` и `Auto Tree` сохраняются сразу глобально, а при существующем
+job override обновляют также его. Некоторые Defaults применяются и сохраняются
+сразу. Ориентируйся на кнопки и статус выбранного редактора; закрытие Settings
+не является универсальной отменой изменений.
+
+В `Defaults` полный фоновый прогрев `Warm all job pages in background` по умолчанию
+выключен: на большом проекте он занимает CPU и диск. Начни с обычной навигации;
+включай прогрев осознанно. Настройки текущего Preview хранятся отдельно от старой
+версии; подробности профиля — в [хранении проектов](job-creation-storage.md).
 
 ## Опциональные модули { #optional .kb-section-title .kb-st--violet }
 
-Всё ниже **выключено по умолчанию** — включается в [`Settings → Modules`](#modules).
+    Всё ниже **выключено по умолчанию** — включается в [`Settings → Modules`](#modules).
 После включения соответствующая «пилюля» появляется в строке режимов.
 
 ??? note ":material-table-edit: Sheet Manager — метаданные листов"
@@ -780,7 +853,7 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
 
     <figure markdown>
       ![Sheet Manager](../assets/images/ourplanecore/opc-sheet-manager.png)
-      <figcaption><code>Sheet Manager</code>: сетка листов, Auto Name / Auto Scale / Name+Scale, Apply Checked.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>Sheet Manager</code>: сетка листов, Auto Name / Auto Scale / Name+Scale, Apply Checked.</figcaption>
     </figure>
 
 ??? note ":material-format-list-checks: Takeoff Manager — таблица takeoff'ов"
@@ -790,7 +863,7 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
 
     <figure markdown>
       ![Takeoff Manager](../assets/images/ourplanecore/opc-takeoff-manager.png)
-      <figcaption><code>Takeoff Manager</code>: таблица items/sections, quantities, экспорт.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>Takeoff Manager</code>: таблица items/sections, quantities, экспорт.</figcaption>
     </figure>
 
 ??? note ":material-cube-outline: 3D — per-edge roof и rafters"
@@ -817,7 +890,7 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
 
     <figure markdown>
       ![3D](../assets/images/ourplanecore/opc-3d.png)
-      <figcaption><code>3D</code>: Build (Auto / Wall / Roof Base / Select Edge / Generate Roof) + Rafters (Pick Faces / Whole Roof / Spacing / Size) + Viewer (Fit/Iso/Top/Front/Reset).</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>3D</code>: Build (Auto / Wall / Roof Base / Select Edge / Generate Roof) + Rafters (Pick Faces / Whole Roof / Spacing / Size) + Viewer (Fit/Iso/Top/Front/Reset).</figcaption>
     </figure>
 
     !!! warning "Старый «3D Massing» отключён"
@@ -833,18 +906,21 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
     `Retry Failed`, `Open Details`, `Go to Page`, `Create Set` / `Marker Sets` /
     `Export Markers`. Внизу отдельно — **AI Inbox** (тот же поток, богаче ПКМ-меню).
 
-    **Поток:** отметил доказательство → `Run AI` шлёт кроп+промпт в OpenAI → ответ
+    **Поток:** отметил доказательство → `Run AI` → проверил состав запроса в
+    `Review AI Attachments` → отправил запрос в OpenAI → ответ
     парсится в **draft** → `Review Action Draft` открывает диалог со строками-кандидатами.
+    Кроме основного crop и промпта запрос может включать дополнительные
+    context crops и JSON слоёв/маркеров; проверь выбранные вложения перед отправкой.
     Quantity появляется **только** после кнопки **`Apply Accepted`** (остальные:
     `Accept Selected` / `Reject Selected` / `Accept Valid` / `Reject All` /
     `Preview Selected`).
 
     **Ключ:** переменная окружения `OPENAI_API_KEY` (можно сохранить через `AI Settings`).
-    Модель — `OPENAI_MODEL` или combo в `AI Settings`; дефолт **`gpt-5-mini`**.
+    Модель выбирается в `AI Settings`; дефолт **`gpt-5-mini`**.
 
     <figure markdown>
       ![AI Manager](../assets/images/ourplanecore/opc-ai-manager.png)
-      <figcaption><code>AI Manager</code>: Setup / Review / Batch / Markers — Run AI, Run New, Retry Failed, маркер-сеты.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>AI Manager</code>: Setup / Review / Batch / Markers — Run AI, Run New, Retry Failed, маркер-сеты.</figcaption>
     </figure>
 
     !!! warning "AI safety"
@@ -862,7 +938,7 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
 
     <figure markdown>
       ![Report Builder](../assets/images/ourplanecore/opc-report-builder.png)
-      <figcaption><code>Report Builder</code>: Reload TemplateCom.xlsm, Refresh, Apply Walls.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>Report Builder</code>: Reload TemplateCom.xlsm, Refresh, Apply Walls.</figcaption>
     </figure>
 
 ??? note ":material-package-variant-closed: Materials — извлечение материалов"
@@ -879,12 +955,13 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
 
     <figure markdown>
       ![Materials](../assets/images/ourplanecore/opc-materials.png)
-      <figcaption><code>Materials</code>: Extract, Report Sheet, экспорт JSON / CSV.</figcaption>
+      <figcaption>Историческая иллюстрация; актуальные команды — в тексте. <code>Materials</code>: Extract, Report Sheet, экспорт JSON / CSV.</figcaption>
     </figure>
 
 ## Mental model { .kb-section-title .kb-st--green }
 
-Программа построена вокруг **job folder** — всё локально, ничего в облаке.
+Программа построена вокруг **проекта** (`.ourplan` или folder-job) и его локальных
+данных. AI-запросы — отдельная внешняя операция, которую запускает пользователь.
 
 | Слой | Что хранит | Source of truth для |
 | --- | --- | --- |
@@ -906,65 +983,28 @@ sections, с units, notes и ценами. `Current-sheet filter` показыв
       `OurPlanCore`.
     - **Three-panel shell:** Pages tree слева, PDF viewport по центру
       (SkiaSharp-overlay), Takeoffs tree справа; AI Inbox снизу (когда модуль AI вкл).
-    - **PDF-рендер в два слоя:** (1) статичная картинка страницы — Python-воркер
-      (PyMuPDF, `pdf_layers_helper.py`); (2) overlay measurements — `PdfViewport`
-      (SkiaSharp); fallback — Docnet/PDFium.
+    - **PDF-рендер:** кэшированные растры, PDFium и Python/PyMuPDF-путь для PDF-слоёв
+      выбираются по режиму и доступным данным. Замеры рисуются поверх листа отдельно.
+      На больших листах используются кэши и детальный рендер видимого участка.
     - **Геометрия:** `Line` = сумма отрезков × scale; `Area` = shoelace; `Count` =
       число маркеров. Каждый `Measurement` хранит свой `PageFolder` + scale.
-    - **Autosave** — debounce 500 мс. Настройки — `%APPDATA%\OurPlanCore\
-      settings.json`; логи — `%APPDATA%\OurPlanCore\logs\app-<date>.log`. Дефолтная
-      папка job'ов — `Documents\OurPlanCore Jobs`. (Старое имя `OurPlaneCore` ещё
-      читается для совместимости.)
+    - **Autosave** объединяет частые изменения в рабочей копии. `Save` и закрытие
+      пытаются записать checkpoint в `.ourplan`. Если при закрытии выбран вариант
+      оставить изменения в local recovery, переносимый файл остаётся прежним до
+      успешного `Save` / `Save As`. Профиль настроек и логов зависит от установленной
+      версии; перед переносом или бекапом дождись успешного сохранения файла.
 
 ## Горячие клавиши { #hotkeys .kb-section-title .kb-st--blue }
 
-=== "Global / tools"
+**Settings → Keyboard Shortcuts → Open Keyboard Shortcuts...** открывает
+отдельное окно для назначения и изменения клавиш, включая команды без исходного
+сочетания — например, горизонтальное и вертикальное зеркало выбранных замеров.
+До Save старые назначения сохраняются. Контекст окна, выбор, модуль и доступ
+на запись учитываются; ввод текста и жесты мышью работают по-прежнему.
 
-    | Клавиша | Действие |
-    | --- | --- |
-    | ++f1++ | Показать/закрыть шпаргалку клавиш |
-    | ++esc++ | Закрыть помощь / отменить активное действие |
-    | ++ctrl+o++ / ++ctrl+shift+o++ | Open / Import job · Recent |
-    | ++ctrl+s++ | Save |
-    | ++ctrl+m++ / ++ctrl+shift+m++ | Merge / Split сегментов |
-    | ++ctrl+shift+p++ | Command Palette |
-    | ++space++ | Старт/стоп `Record` |
-    | ++t++ | Новый takeoff item |
-    | ++b++ ++k++ | Add Bookmark (последовательно, до 0.9 с) |
-    | ++f4++ / ++f5++ | Set Scale на выбранных листах / Open Name-Scale |
-    | ++minus++ | Свернуть деревья Pages и Takeoffs |
-    | ++v++ / ++e++ / ++s++ / ++r++ | Pan / Select / Scale / Ruler |
-    | ++h++ / ++d++ / ++n++ | Highlighter / Draw Line (Extra Joists) / Note |
-    | ++p++ / ++l++ / ++a++ / ++j++ | Count / Line / Area / Joist Area |
-    | ++b++ / ++o++ / ++x++ | Beam / Openings / Area Cut |
-
-=== "Viewport"
-
-    | Клавиша | Действие |
-    | --- | --- |
-    | ++c++ | Завершить текущее рисование |
-    | ++f++ | Fit page |
-    | ++f2++ | Rename takeoff выбранного объекта |
-    | ++f3++ / ++ctrl+f3++ | Snap / PDF Snap |
-    | ++f8++ / ++f9++ | Ortho / Box mode |
-    | ++shift++ | Временно форсить Ortho (при рисовании) |
-    | ++ctrl+plus++ / ++ctrl+minus++ | Зум +/− |
-    | ++ctrl+z++ / ++backspace++ | Undo действия / последней точки |
-    | ++ctrl+a++ / ++ctrl+c++ / ++ctrl+v++ | Выбрать всё / копировать / вставить у курсора |
-    | ++delete++ | Удалить выбранное |
-    | ++ctrl++ / ++ctrl+shift++ / ++alt++ | Добавить-toggle / убрать из выбора / вершины |
-
-=== "Trees / guides"
-
-    | Клавиша | Действие |
-    | --- | --- |
-    | ++ctrl+c++ / ++ctrl+x++ / ++ctrl+v++ / ++ctrl+d++ | Copy / Cut / Paste / Duplicate |
-    | ++ctrl+up++ / ++ctrl+down++ | Двигать узел вверх/вниз |
-    | ++ctrl+enter++ | (Takeoffs) выбрать measurements секции на canvas |
-    | ++f2++ / ++delete++ | Rename / Delete |
-    | ++enter++ | Открыть выбранный bookmark / AI-запись |
-    | ++tab++ | Layer Trace: цикл edge-snap / кандидата (после включения) |
-    | 3D Roof guide: ++r++ ++h++ ++v++ ++e++ ++k++ ++p++ | Ridge / Hip / Valley / Eave / Rake / Pitch |
+Полная инструкция, конфликтология, пресеты, восстановление и таблицы defaults:
+**[Горячие клавиши OurPlanCore](ourplancore-shortcuts.md)**. После изменений
+актуальные сочетания смотри в редакторе и помощи F1.
 
 ## See also
 

@@ -17,14 +17,34 @@
 ## Как читать страницы
 
 - `Старт` — процесс, структура, checklist.
+- `OurPlanCore` — начало работы, интерфейс, проекты, горячие клавиши и решение
+  проблем. Начни с [короткого маршрута](../reference/ourplancore-start.md).
 - `Типы работ` — логика COM, EWP/Capital, Residential.
 - `Работа` — предметные страницы по разделам takeoff.
-- `Справочник` — правила, таблицы, формулы, source map.
+- `Справочник` — правила, таблицы и формулы.
 
-## Как обновлять
+Описание функции программы проверяй по версии в начале её инструкции.
+Старый скриншот показывает расположение элементов в момент съёмки; текущие
+названия и действия описаны в тексте. Планы развития не являются готовыми
+функциями. Для сравнения выпусков есть
+[история изменений OurPlanCore](../reference/ourplancore-changelog.md).
 
-- Добавляй новые правила в точную предметную страницу и в
-  [Советы и важные вещи](../reference/boss-feedback-rules.md), если это feedback.
+## Найти раздел по задаче
+
+| Задача | Маршрут |
+| --- | --- |
+| Выбрать процесс по типу работы | [COM](../work-types/com.md), [EWP / Capital](../work-types/ewp-capital.md), [Residential](../work-types/residential.md), [Reconstruction](../work-types/reconstruction.md) |
+| Разобраться с металлическими стенами | [Metal Tracks / CFMF](../work/vertical/walls/metal-tracks.md) |
+| Найти потолочный или soffit framing | [Ceiling / Soffit Framing](../work/horizontal/ceiling-soffit-framing.md) |
+| Найти dormer в roof framing | [Dormer](../work/horizontal/roof-framing/dormer.md) |
+| Найти loft в площадях | [Loft](../work/sqfts/loft.md) |
+| Проверить весь путь от PDF до выдачи | [Workflow](workflow.md), затем [QA checklist](quality-checklist.md) |
+
+## Обновить правило
+
+- Добавляй подтверждённое правило в одну предметную страницу. В
+  [Советы и важные вещи](../reference/boss-feedback-rules.md) оставляй краткую
+  ссылку на него, если это feedback.
 - Не храни приватные ссылки, emails, UIDs, salary history и credentials.
 - Если правило относится к конкретному клиенту, обнови
   [Правила клиентов](client-rules.md).
@@ -35,14 +55,12 @@
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Excel: [5 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/3276801/Excel)
-    - PlanSwift: [2 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/4292609/PlanSwift)
-    - PlanSwift - large GIF attachments: [1 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/4292609/PlanSwift)
+    - Excel: 5 карт. Confluence (архивный источник; ссылка не публикуется)
+    - PlanSwift: 2 карт. Confluence (архивный источник; ссылка не публикуется)
+    - PlanSwift - large GIF attachments: 1 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 8 иллюстраций</summary>

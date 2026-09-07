@@ -205,16 +205,14 @@
 <!-- confluence-gallery:start -->
 ## Визуальная проверка
 
-Эти картинки уже привязаны к правилам страницы. Используй их как быстрые
-checkpoint-ы перед output: сначала прочитай правило выше, потом открой нужную
-карточку и проверь похожий condition на плане/schedule.
+Архивные иллюстрации помогают прочитать правило. Для своего takeoff сверь его с чертежами и scope текущего проекта.
 
 ??? info "Источник картинок"
-    - Roof Framing - конструкции крыши: [2 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/65962048/Roof+Framing+-)
-    - Vertical Constructions: [10 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/65110035/Vertical+Constructions)
-    - Walls: [3 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/pages/65175555/Walls)
-    - work: [9 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/overview)
-    - work - large GIF attachments: [2 карт. Confluence](https://redacted.atlassian.net/wiki/spaces/work/overview)
+    - Roof Framing - конструкции крыши: 2 карт. Confluence (архивный источник; ссылка не публикуется)
+    - Vertical Constructions: 10 карт. Confluence (архивный источник; ссылка не публикуется)
+    - Walls: 3 карт. Confluence (архивный источник; ссылка не публикуется)
+    - work: 9 карт. Confluence (архивный источник; ссылка не публикуется)
+    - work - large GIF attachments: 2 карт. Confluence (архивный источник; ссылка не публикуется)
 
 <details class="kb-figures">
   <summary>Показать 26 иллюстраций</summary>

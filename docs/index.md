@@ -11,7 +11,8 @@ hide:
 Workflow, чек-листы, правила COM/EWP, советы из реальных правок и таблицы по Walls, Framing, Sheathing, Hangers — в одном месте.
 </p>
 <div class="kb-hero__actions" markdown>
-[Старт :octicons-arrow-right-24:](start/how-to-use.md){ .kb-hero__btn .kb-hero__btn--primary }
+[Начать работу :octicons-arrow-right-24:](start/how-to-use.md){ .kb-hero__btn .kb-hero__btn--primary }
+[OurPlanCore](reference/ourplancore-start.md){ .kb-hero__btn .kb-hero__btn--ghost }
 [Советы и важные вещи](reference/boss-feedback-rules.md){ .kb-hero__btn .kb-hero__btn--ghost }
 [QA checklist](start/quality-checklist.md){ .kb-hero__btn .kb-hero__btn--ghost }
 </div>
@@ -163,35 +164,60 @@ Workflow, чек-листы, правила COM/EWP, советы из реал�
 
 </div>
 
-## Схемы и иллюстрации { .kb-section-title .kb-st--green }
+## OurPlanCore — работа в программе { .kb-section-title .kb-st--green }
 
-Сюда подгружаются картинки и диаграммы по разделам: wall sections, framing details, roof connections, hanger выбор. Заглушки постепенно заменяются реальными схемами и screenshots.
+Инструкции сверены с **2.2.7 Preview, 6 сентября 2026**. Выбери действие:
 
-<div class="kb-gallery">
-  <div class="kb-gallery__item kb-gallery__item--placeholder">
-    <span>:material-image-plus:</span>
-    Wall section — exterior 2x6
-  </div>
-  <div class="kb-gallery__item kb-gallery__item--placeholder">
-    <span>:material-image-plus:</span>
-    Floor framing detail — joist + rim
-  </div>
-  <div class="kb-gallery__item kb-gallery__item--placeholder">
-    <span>:material-image-plus:</span>
-    Roof framing — ridge + valley
-  </div>
-  <div class="kb-gallery__item kb-gallery__item--placeholder">
-    <span>:material-image-plus:</span>
-    Hanger selection chart
-  </div>
-  <div class="kb-gallery__item kb-gallery__item--placeholder">
-    <span>:material-image-plus:</span>
-    Sheathing zones
-  </div>
-  <div class="kb-gallery__item kb-gallery__item--placeholder">
-    <span>:material-image-plus:</span>
-    Interior trim — base / casing / crown
-  </div>
+<div class="grid cards" markdown>
+
+-   :material-play-circle-outline:{ .lg .middle } **Первый проект**
+
+    ---
+
+    Открыть PDF, проверить масштаб, создать takeoff, сохранить и выдать результат.
+
+    [Начало работы](reference/ourplancore-start.md)
+
+-   :material-ruler-square:{ .lg .middle } **Замеры и инструменты**
+
+    ---
+
+    Count, Line, Area, Joists, Beams, Openings, привязки, зеркала и отдельные окна.
+
+    [Полный справочник](reference/ourplanecore.md)
+
+-   :material-keyboard-outline:{ .lg .middle } **Свои горячие клавиши**
+
+    ---
+
+    Назначить действие, найти конфликт, сохранить набор для себя или проекта.
+
+    [Настроить клавиши](reference/ourplancore-shortcuts.md)
+
+-   :material-content-save-outline:{ .lg .middle } **Сохранение и копии**
+
+    ---
+
+    Файл .ourplan, старые папочные проекты, Save As, recovery и бекап.
+
+    [Проекты и хранение](reference/job-creation-storage.md)
+
+-   :material-lifebuoy:{ .lg .middle } **Если что-то не работает**
+
+    ---
+
+    Найти скрытую команду, вернуть замер, разобраться с PDF, Excel и сохранением.
+
+    [Решение проблем](reference/ourplancore-troubleshooting.md)
+
+-   :material-update:{ .lg .middle } **Что изменилось**
+
+    ---
+
+    Новые функции, исправления и проверенные ограничения текущего Preview.
+
+    [История изменений](reference/ourplancore-changelog.md)
+
 </div>
 
 !!! tip "Как добавлять картинки и схемы"

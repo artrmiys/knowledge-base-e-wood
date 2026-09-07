@@ -13,8 +13,8 @@ walls/framing/sheathing). Это **шпаргалка для конструкт�
 таблицы, и много схем/картинок.
 
 - **Стек:** [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
-- **Деплой:** GitHub Pages (workflow в [.github/workflows/deploy.yml](.github/workflows/deploy.yml)) при каждом push в `main`.
-- **Прод-URL:** GitHub Pages project URL
+- **Деплой:** workflow в [.github/workflows/deploy.yml](.github/workflows/deploy.yml) настроен на push в `main` и ручной запуск; успешную публикацию проверять отдельно.
+- **Прод-URL:** https://artrmiys.github.io/knowledge-base/
 - **Репо:** repository URL
 - **Источник контента:** Obsidian-vault `C:\Users\User\Documents\0.Obsidian` + Tilda + Trello + локальные правки.
 
@@ -62,7 +62,7 @@ project-root/
 ├── tools/
 │   └── trello_json_to_markdown.py   ← конвертер Trello JSON → MD
 ├── docs/                      ← КОНТЕНТ САЙТА
-│   ├── index.md               ← главная (hero + grid cards + galery)
+│   ├── index.md               ← главная (hero + маршруты по задачам)
 │   ├── assets/
 │   │   ├── images/            ← все картинки и схемы (см. раздел 7)
 │   │   ├── js/zoom.js         ← клик-зум картинок (подключён в extra_javascript)
@@ -90,8 +90,18 @@ project-root/
 
 1. **Главная** — `index.md`
 2. **Старт** — процесс, чек-листы, как пользоваться
-3. **Работа** — основное: типы работ, walls, framing, sheathing, SQFTs, trims
-4. **Справочник** — советы, hangers, formulas, sources
+3. **OurPlanCore** — семь маршрутов: старт, инструменты, проекты, имена, клавиши, проблемы, изменения
+4. **Работа** — основное: типы работ, walls, framing, sheathing, SQFTs, trims
+5. **Справочник** — советы, hangers, formulas, sources; подраздел «Редактору KB»
+
+Каноны программы и правила проверки версии перечислены в
+[maintenance](docs/start/maintenance.md). Текущий аудит и постраничная глубина
+проверки — [AUDIT.md](AUDIT.md) и [DOCUMENT_REGISTER.md](DOCUMENT_REGISTER.md).
+Описание OurPlanCore сверено с 2.2.7 Preview на 06.09.2026. При следующем релизе
+сверяй фактическое поведение и обновляй затронутые сценарии; дату нельзя менять
+без проверки. Сохраняй старые URL `reference/ourplanecore/` и
+`reference/job-creation-storage/`. Таблица клавиш имеет один канон:
+`reference/ourplancore-shortcuts.md`.
 
 ### Правила нейминга в `nav`
 
@@ -368,8 +378,9 @@ broken links и опечатки в путях.
   При перемещении файлов будь осторожен — обновляй ссылки.
 - **`Duplicate of Gable`** оставлен на диске, но скрыт через `not_in_nav` —
   это артефакт старого takeoff-дерева, выбрасывать пока не стали.
-- **Главная — карточная**, с галереей-заглушками под будущие схемы. Картинки
-  ожидаются на каждой предметной странице.
+- **Главная — карточная**, с рабочими маршрутами вместо прежних шести
+  заглушек (пересборка 06.09.2026). Картинки на предметных страницах должны
+  помогать прочитать правило; архивные иллюстрации подписываются как архивные.
 
 ---
 
