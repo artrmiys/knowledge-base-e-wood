@@ -433,3 +433,13 @@
   .md-sidebar, .md-header, .md-footer, .md-tabs { display: none !important; }
   .md-content { margin: 0 !important; }
 }
+
+/* Keep swipeable content tabs inside the article on narrow screens. */
+@media (max-width: 44.984375em) {
+  .md-typeset .tabbed-labels {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
